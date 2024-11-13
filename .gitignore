@@ -23,9 +23,6 @@ output/
 build_log.txt
 
 # VScode settings
-.vscode/*cortex-debug*
-.vscode/settings.json
-.vscode/*_properties.json
-.vscode/launch.json
+.vscode/
 
 *.jlink

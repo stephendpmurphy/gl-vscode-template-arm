@@ -19,6 +19,9 @@ set(DEBUG_TOOLSET "PYOCD")
 # THIS OPTION IS ONLY SUPPORTED WITH THE JLINK TOOLSET
 set(ENABLE_SEGGER_RTT false)
 
+set(DEBUG_INTERFACE "swd")
+# set(DEBUG_INTERFACE "jtag")
+
 # MCU Target name as seen in debug toolset
 set(MCU_TARGET LPC5526)
 
@@ -74,7 +77,7 @@ project(${PROJECT_NAME} VERSION 1.0 LANGUAGES C)
 
 # Set the C standard and executable suffix
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Set our executable output path to the 'output/' folder
@@ -163,3 +166,6 @@ add_custom_target(flash ${DEBUG_FLASH_CMD})
 
 # Add a makefile "target" for running unit tests
 add_custom_target(test cd ../ && ceedling gcov:all utils:gcov)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/vscode_debug.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/vscode_intellisense.cmake)
