@@ -12,14 +12,15 @@ endforeach()
 string(JOIN ",\n" INCLUDE_DIRS_JSON ${INCLUDE_DIRS_JSON})
 
 # Specify the template for the c_cpp_properties.json file
-file(GENERATE OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/.vscode/c_cpp_properties.json CONTENT "
-{
+write_file(${CMAKE_CURRENT_SOURCE_DIR}/.vscode/c_cpp_properties.json
+"{
     \"configurations\": [
         {
             \"name\": \"${CMAKE_BUILD_TYPE}\",
             \"includePath\": [
                 ${INCLUDE_DIRS_JSON}
             ],
+            \"compileCommands\": \"\$\{workspaceFolder\}/build/compile_command.json\",
             \"defines\": [\"\"],
             \"compilerPath\": \"${CMAKE_C_COMPILER}\",
             \"cStandard\": \"c99\",
@@ -28,5 +29,4 @@ file(GENERATE OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/.vscode/c_cpp_properties.json C
         }
     ],
     \"version\": 1
-}
-")
+}")

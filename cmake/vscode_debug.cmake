@@ -4,8 +4,8 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.vscode)
 string(TOLOWER ${DEBUG_TOOLSET} DEBUG_SERVER_TYPE)
 
 # Specify the template for the c_cpp_properties.json file
-write_file(${CMAKE_CURRENT_SOURCE_DIR}/.vscode/launch.json "
-{
+write_file(${CMAKE_CURRENT_SOURCE_DIR}/.vscode/launch.json
+"{
     \"version\":\"0.2.0\",
     \"configurations\":[
     {
@@ -41,7 +41,6 @@ else()
 
 write_file(${CMAKE_CURRENT_SOURCE_DIR}/.vscode/launch.json
 "   }]
-}"
-APPEND)
+}" APPEND)
 
 endif()
